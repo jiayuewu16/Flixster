@@ -92,6 +92,10 @@ public class Movie implements Comparable<Movie>{
         return voteAverage;
     }
 
+    public String getVideoId() {
+        return videoId;
+    }
+
     @Override
     public int compareTo(Movie o) {
         return Double.compare(o.popularity, this.popularity);

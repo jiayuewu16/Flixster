@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,13 +47,16 @@ public class MovieDetailsActivity extends AppCompatActivity {
         Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", movie.getTitle()));
 
         binding.tvTitle.setText(movie.getTitle());
+        binding.tvTitle.setTextColor(Color.YELLOW);
         binding.tvOverview.setText(movie.getOverview());
+        binding.tvOverview.setTextColor(Color.WHITE);
         binding.rbVoteAverage.setRating((float)(movie.getVoteAverage()/2.0));
 
         int radius = 30; // corner radius, higher value = more rounded
-        int margin = 10; // crop margin, set to 0 for corners with no crop
+        int margin = 5; // crop margin, set to 0 for corners with no crop
         String imageURL = movie.getPosterPath();
         int placeholderPath = R.drawable.flicks_movie_placeholder;
+        int playButtonPath = R.drawable.play_button_image;
         if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             imageURL = movie.getBackdropPath();
             placeholderPath = R.drawable.flicks_backdrop_placeholder;
@@ -68,11 +72,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MovieDetailsActivity.this, MovieTrailerActivity.class);
-                intent.putExtra(VIDEO_ID, movie.videoId);
+                intent.putExtra(VIDEO_ID, movie.getVideoId());
                 startActivity(intent);
             }
         });
-
+        Glide.with(this)
+                .load(playButtonPath)
+                .centerCrop()
+                .into(binding.ivPlay);
 
     }
 

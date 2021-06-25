@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:background="@drawable/background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,16 +10,21 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        android:fontFamily="@font/lato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/ivPoster"
-        android:layout_marginStart="5dp"
         android:textSize="24sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/gold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:text="Fast Furious Presents: Hobbs Shaw" />
 
     <RatingBar
+        android:progressDrawable="@drawable/ratingbar_gold"
         android:id="@+id/rbVoteAverage"
         style="@android:style/Widget.Holo.Light.RatingBar"
         android:layout_width="wrap_content"
@@ -25,15 +32,20 @@
         android:layout_below="@+id/tvTitle"
         android:layout_toEndOf="@+id/ivPoster"
         android:isIndicator="true"
+        android:layout_marginStart="10dp"
         android:numStars="5"
         android:stepSize="0.5" />
 
     <TextView
         android:id="@+id/tvOverview"
+        android:fontFamily="@font/lato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivPoster"
         android:layout_alignParentStart="true"
+        android:textColor="@color/white"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         tools:text="A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw." />
 
     <ImageView
@@ -43,7 +55,19 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:clickable="true"
-        android:onClick="onImageClick"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ivPoster"
+        android:layout_alignBottom="@+id/ivPoster"
+        android:layout_alignParentStart="@+id/ivPoster"
+        android:layout_alignParentTop="@+id/ivPoster"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:gravity="center"
+        tools:srcCompat="@drawable/play_button_image" />
 
 </RelativeLayout>

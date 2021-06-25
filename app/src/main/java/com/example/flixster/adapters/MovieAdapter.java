@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +21,10 @@ import com.bumptech.glide.Glide;
 import com.example.flixster.R;
 import com.example.flixster.databinding.ActivityMainBinding;
 import com.example.flixster.databinding.ItemMovieBinding;
+import com.example.flixster.models.MainActivity;
 import com.example.flixster.models.Movie;
 import com.example.flixster.models.MovieDetailsActivity;
+import com.example.flixster.models.MovieTrailerActivity;
 
 import org.parceler.Parcels;
 
@@ -66,11 +69,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         public void bind(Movie movie) {
             binding.tvTitle.setText(movie.getTitle());
+            binding.tvTitle.setTextColor(Color.YELLOW);
             binding.tvOverview.setText(movie.getOverview());
+            binding.tvOverview.setTextColor(Color.WHITE);
             int radius = 30; // corner radius, higher value = more rounded
-            int margin = 10; // crop margin, set to 0 for corners with no crop
+            int margin = 5; // crop margin, set to 0 for corners with no crop
             String imageURL = movie.getPosterPath();
             int placeholderPath = R.drawable.flicks_movie_placeholder;
+            int playButtonPath = R.drawable.play_button_image;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageURL = movie.getBackdropPath();
                 placeholderPath = R.drawable.flicks_backdrop_placeholder;
@@ -82,6 +88,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     .centerCrop()
                     .transform(new RoundedCornersTransformation(radius, margin))
                     .into(binding.ivPoster);
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                binding.ivPoster.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MovieAdapter.this.context, MovieTrailerActivity.class);
+                        intent.putExtra(MovieDetailsActivity.VIDEO_ID, movie.getVideoId());
+                        MovieAdapter.this.context.startActivity(intent);
+                    }
+                });
+                Glide.with(context)
+                        .load(playButtonPath)
+                        .centerCrop()
+                        .into(binding.ivPlay);
+            }
         }
 
         @Override
