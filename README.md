@@ -18,7 +18,8 @@ The following **required** functionality is completed:
 The following **stretch** features are implemented:
 
 * [x] Improved the user interface by experimenting with styling and coloring.
-  * Changed background and text styles and colors.
+  * Changed background.
+  * Changed text font and colors.
   * Changed launch icon of the Flixster Android app.
   * Ratings bar in the movie details display is custom.
 * [x] Apply rounded corners for the poster or background images using [Glide transformations](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#transformations)
