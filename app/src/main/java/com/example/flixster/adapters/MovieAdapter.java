@@ -29,8 +29,6 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    ItemMovieBinding binding;
-
     Context context;
     List<Movie> movies;
 
@@ -43,8 +41,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d("MovieAdapter", "onCreateViewHolder");
-        binding = ItemMovieBinding.inflate(LayoutInflater.from(context));
-        return new ViewHolder(binding.getRoot());
+        ItemMovieBinding binding = ItemMovieBinding.inflate(LayoutInflater.from(context));
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -59,26 +57,28 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        ItemMovieBinding binding;
+        public ViewHolder(@NonNull ItemMovieBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
             itemView.setOnClickListener(this);
         }
 
         public void bind(Movie movie) {
             binding.tvTitle.setText(movie.getTitle());
             binding.tvOverview.setText(movie.getOverview());
-            Glide.with(context)
-                    .load("drawable/flicks_movie_placeholder.gif")
-                    .placeholder(R.drawable.flicks_movie_placeholder)
-                    .into(binding.ivPoster);
             int radius = 30; // corner radius, higher value = more rounded
             int margin = 10; // crop margin, set to 0 for corners with no crop
             String imageURL = movie.getPosterPath();
+            int placeholderPath = R.drawable.flicks_movie_placeholder;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageURL = movie.getBackdropPath();
+                placeholderPath = R.drawable.flicks_backdrop_placeholder;
             }
             Glide.with(context)
                     .load(imageURL)
+                    .placeholder(placeholderPath)
+                    .error(placeholderPath)
                     .centerCrop()
                     .transform(new RoundedCornersTransformation(radius, margin))
                     .into(binding.ivPoster);

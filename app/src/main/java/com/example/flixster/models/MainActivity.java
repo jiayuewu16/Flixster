@@ -25,8 +25,7 @@ import java.util.List;
 import okhttp3.Headers;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=3eccae85541051311754a4bd2ea023db";
+    public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=%s";
     public static final String TAG = "MainActivity";
 
     List<Movie> movies;
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
+        client.get(String.format(NOW_PLAYING_URL, getString(R.string.tmdb_api_key)), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.d(TAG, "onSuccess");
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONArray results = jsonObject.getJSONArray("results");
                     Log.i(TAG, "Results: " + results.toString());
-                    movies.addAll(Movie.fromJsonArray(results));
+                    movies.addAll(Movie.fromJsonArray(results, MainActivity.this));
                     Collections.sort(movies);
                     movieAdapter.notifyDataSetChanged();
                     Log.i(TAG, "Movies: " + movies.size());
