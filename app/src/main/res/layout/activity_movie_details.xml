@@ -63,11 +63,12 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/ivPoster"
         android:layout_alignBottom="@+id/ivPoster"
-        android:layout_alignParentStart="@+id/ivPoster"
-        android:layout_alignParentTop="@+id/ivPoster"
+        android:layout_alignStart="@+id/ivPoster"
+        android:layout_alignTop="@+id/ivPoster"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:gravity="center"
+        android:src="@drawable/play_button_image"
         tools:srcCompat="@drawable/play_button_image" />
 
 </RelativeLayout>

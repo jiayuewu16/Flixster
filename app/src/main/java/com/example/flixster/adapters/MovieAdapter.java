@@ -97,10 +97,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                         MovieAdapter.this.context.startActivity(intent);
                     }
                 });
-                Glide.with(context)
-                        .load(playButtonPath)
-                        .centerCrop()
-                        .into(binding.ivPlay);
             }
         }
 

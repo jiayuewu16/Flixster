@@ -39,7 +39,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.black));
         ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -76,11 +76,5 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Glide.with(this)
-                .load(playButtonPath)
-                .centerCrop()
-                .into(binding.ivPlay);
-
     }
-
 }
