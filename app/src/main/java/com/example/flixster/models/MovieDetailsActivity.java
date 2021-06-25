@@ -39,7 +39,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.black));
         ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -47,9 +46,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", movie.getTitle()));
 
         binding.tvTitle.setText(movie.getTitle());
-        binding.tvTitle.setTextColor(Color.YELLOW);
         binding.tvOverview.setText(movie.getOverview());
-        binding.tvOverview.setTextColor(Color.WHITE);
         binding.rbVoteAverage.setRating((float)(movie.getVoteAverage()/2.0));
 
         int radius = 30; // corner radius, higher value = more rounded

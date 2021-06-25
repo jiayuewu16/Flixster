@@ -69,9 +69,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         public void bind(Movie movie) {
             binding.tvTitle.setText(movie.getTitle());
-            binding.tvTitle.setTextColor(Color.YELLOW);
             binding.tvOverview.setText(movie.getOverview());
-            binding.tvOverview.setTextColor(Color.WHITE);
             int radius = 30; // corner radius, higher value = more rounded
             int margin = 5; // crop margin, set to 0 for corners with no crop
             String imageURL = movie.getPosterPath();

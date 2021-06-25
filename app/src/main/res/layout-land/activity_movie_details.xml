@@ -3,14 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".models.MovieDetailsActivity">
 
     <TextView
         android:id="@+id/tvTitle"
-        android:fontFamily="@font/lato"
+        android:textColor="@color/gold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,7 +20,6 @@
         android:layout_toEndOf="@+id/ivPoster"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="24sp"
-        android:textColor="@color/gold"
         tools:text="Fast Furious Presents: Hobbs Shaw" />
 
     <RatingBar
@@ -39,14 +37,12 @@
 
     <TextView
         android:id="@+id/tvOverview"
-        android:fontFamily="@font/lato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivPoster"
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:textColor="@color/white"
         tools:text="A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw." />
 
     <ImageView
