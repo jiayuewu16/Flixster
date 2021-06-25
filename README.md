@@ -23,6 +23,7 @@ The following **stretch** features are implemented:
   * Changed text font and colors.
   * Changed launch icon of the Flixster Android app.
   * Ratings bar in the movie details display is custom.
+  * Movie order sorted by popularity, with most popular at the top.
 * [x] Apply rounded corners for the poster or background images using [Glide transformations](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#transformations)
 * [x] Apply the popular [View Binding annotation library](http://guides.codepath.org/android/Reducing-View-Boilerplate-with-ViewBinding) to reduce boilerplate code.
 * [x] Allow video trailers to be played in full-screen using the YouTubePlayerView from the details screen.
