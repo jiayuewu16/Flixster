@@ -18,7 +18,8 @@ The following **required** functionality is completed:
 The following **stretch** features are implemented:
 
 * [x] Improved the user interface by experimenting with styling and coloring.
-  * Changed background.
+  * Toolbar background color changed.
+  * Changed background image.
   * Changed text font and colors.
   * Changed launch icon of the Flixster Android app.
   * Ratings bar in the movie details display is custom.
@@ -30,9 +31,9 @@ The following **stretch** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/jiayuewu16/Flixster/blob/master/walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [Kap](https://getkap.co/).
+GIF created with [LICEcap](https://www.cockos.com/licecap/).
 
 ## Notes
 
